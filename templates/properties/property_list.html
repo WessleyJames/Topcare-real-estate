@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Care</title>
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/properties/">Properties</a></li>
+                <li><a href="/contact/">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Properties</h1>
+        <section>
+            <ul>
+                {% for property in properties %}
+                    <li>
+                        <a href="{{ property.id }}/">{{ property.title }}</a> - ${{ property.price }}
+                    </li>
+                {% empty %}
+                    <li>No properties available at the moment.</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Top Care Real Estate</p>
+    </footer>
+</body>
+</html>
